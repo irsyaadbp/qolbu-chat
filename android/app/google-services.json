@@ -1,0 +1,64 @@
+{
+  "project_info": {
+    "project_number": "1061246147129",
+    "firebase_url": "https://qolbu-chat.firebaseio.com",
+    "project_id": "qolbu-chat",
+    "storage_bucket": "qolbu-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061246147129:android:06bf9904f3ba42159e4be8",
+        "android_client_info": {
+          "package_name": "com.qolbu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1061246147129-g8etmlkcflc2d6n6dlbjm723ifb0b8ev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qolbu",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1061246147129-t0eco2iq94c94ivbqf9p4tk1pk66e1ii.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qolbu",
+            "certificate_hash": "fc61d9bc2cf1c0e5b05bc818384d0001541a1722"
+          }
+        },
+        {
+          "client_id": "1061246147129-od1kbdheoqmpga8sajuqfrbj2ujp3qa3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qolbu",
+            "certificate_hash": "86a84154d51284caac6bb3673c66b98e4b3f32e3"
+          }
+        },
+        {
+          "client_id": "1061246147129-2ohlvp8v6ed4od2r6hjoq6k9cavv2efg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTppl8idZ_4tMX0VjsM6tqoRYhFi7xVX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1061246147129-2ohlvp8v6ed4od2r6hjoq6k9cavv2efg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
