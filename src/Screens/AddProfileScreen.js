@@ -28,7 +28,7 @@ const AddProfileScreen = props => {
   };
 
   const {user, setUser} = React.useContext(UserContext);
-  const [modalVisible, setModalVisible] = React.useState(false);
+  // const [modalVisible, setModalVisible] = React.useState(false);
 
   // const [dataProfile, setDataProfile] = React.useState({
   //   username: '',
@@ -39,11 +39,29 @@ const AddProfileScreen = props => {
   //   setDataProfile({...dataProfile, username: user.username});
   // }, [user]);
 
-  const addProfil = () => {
+  const addProfil = async () => {
+    const data = new FormData();
+    data.append('file', user.photo);
+    data.append('upload_preset', 'eiphu4lw');
+
+    const res = await fetch(
+      'https://api.cloudinary.com/v1_1/qolbu/image/upload',
+      {
+        method: 'POST',
+        body: data,
+      },
+    );
+
+    const file = await res.json();
+    console.log(file, 'iki photo');
+
     auth()
-      .currentUser.updateProfile({displayName: user.username})
-      .then(_ => {
-        // setUser({...user, username: user.username});
+      .currentUser.updateProfile({
+        displayName: user.username,
+        photoURL: file.secure_url,
+      })
+      .then(async _ => {
+        await setUser({...user, photo: file.secure_url});
         props.navigation.navigate('Dashboard');
         // ToastAndroid.show(
         //   `Success edit username ${user.username}`,
@@ -83,7 +101,7 @@ const AddProfileScreen = props => {
         const source = {uri: 'data:image/jpeg;base64,' + response.data};
         console.log(source, 'source');
 
-        setUser({...user, photo: source});
+        setUser({...user, photo: source.uri});
 
         // this.setState({
         //   filePath: response,
@@ -114,7 +132,7 @@ const AddProfileScreen = props => {
           <Image
             source={
               user.photo
-                ? user.photo
+                ? {uri: user.photo}
                 : {
                     uri:
                       'https://akcdn.detik.net.id/community/media/visual/2018/10/19/b5f8bbb6-8bac-4a31-95a2-efb5a4c917d6.jpeg?w=770&q=90',

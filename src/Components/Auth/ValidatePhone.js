@@ -175,7 +175,7 @@ const ValidatePhone = props => {
           username: currentUser.user._user.displayName,
           email: currentUser.user._user.displayName,
           phone: currentUser.user._user.phoneNumber,
-          photo: currentUser.user._user.photoUrl,
+          photo: currentUser.user._user.photoURL,
         });
 
         // if (currentUser.additionalUserInfo.isNewUser) {
