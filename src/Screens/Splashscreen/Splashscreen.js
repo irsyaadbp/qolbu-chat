@@ -11,6 +11,8 @@ import {
 
 import {UserContext} from '../../UserProvider';
 import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const Splashscreen = props => {
   const hasLocationPermission = async () => {
@@ -55,20 +57,44 @@ const Splashscreen = props => {
       // await hasLocationPermission();
       const permissionLocation = await hasLocationPermission();
       if (!permissionLocation) return;
-      const currentUser = await auth().currentUser;
-      console.log(currentUser, 'user');
-      if (!currentUser) {
-        props.navigation.navigate('Auth');
-      } else {
-        setUser({
-          uid: currentUser._user.uid,
-          username: currentUser._user.displayName,
-          email: currentUser._user.displayName,
-          phone: currentUser._user.phoneNumber,
-          photo: currentUser._user.photoUrl,
-        });
-        props.navigation.navigate('Dashboard');
+      // const currentUser = await auth().currentUser;
+      // console.log(currentUser, 'user');
+
+      // if (!currentUser) {
+      //   props.navigation.navigate('Auth');
+      // } else {
+      //   const ref = database().ref(`/users/${currentUser._user.uid}`);
+      //   const snapshot = await ref.once('value');
+
+      // const userData = await AsyncStorage.getItem('@user');
+
+      try {
+        const value = await AsyncStorage.getItem('@user');
+        console.log(value, 'userData');
+        if (value !== null) {
+          try {
+            // await setUser({
+            //   uid: currentUser._user.uid,
+            //   username: currentUser._user.displayName,
+            //   email: currentUser._user.displayName,
+            //   phone: currentUser._user.phoneNumber,
+            //   photo: currentUser._user.photoURL,
+            // });
+
+            await setUser(JSON.parse(value));
+
+            props.navigation.navigate('Dashboard');
+          } catch (e) {
+            console.log(e);
+          }
+        } else {
+          props.navigation.navigate('Auth');
+        }
+      } catch (e) {
+        // error reading value,,
+        console.log(e);
       }
+      // }
     }, 1500);
 
     return () => {

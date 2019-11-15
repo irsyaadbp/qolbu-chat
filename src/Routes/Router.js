@@ -9,17 +9,8 @@ import ProfileScreen from '../Screens/Dashboard/ProfileScreen';
 import AddProfileScreen from '../Screens/AddProfileScreen';
 
 import DashboardScreen from '../Screens/Dashboard/DashboardScreen';
-import TabRouter from './TabRouter';
-
-// const SplashRouter = createStackNavigator(
-//   {
-//     Splashscreen,
-//   },
-//   {
-//     headerMode: 'none',
-//     initialRouteName: 'Splashscreen',
-//   },
-// );
+import PersonalChatScreen from '../Screens/Dashboard/Chat/PersonalChatScreen';
+import ProfileFriendScreen from '../Screens/Dashboard/Friends/ProfileFriendScreen';
 
 const AuthRouter = createStackNavigator(
   {
@@ -34,7 +25,8 @@ const AuthRouter = createStackNavigator(
 const MainRouter = createStackNavigator(
   {
     Dashboard: {screen: DashboardScreen},
-    // Dashboard: {screen: TabRouter},
+    ProfileFriend: {screen: ProfileFriendScreen},
+    Personal: {screen: PersonalChatScreen},
     Profile: {screen: ProfileScreen},
   },
   {

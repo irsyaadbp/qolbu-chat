@@ -173,9 +173,11 @@ const ValidatePhone = props => {
         await setUser({
           uid: currentUser.user._user.uid,
           username: currentUser.user._user.displayName,
-          email: currentUser.user._user.displayName,
+          // email: currentUser.user._user.displayName,
           phone: currentUser.user._user.phoneNumber,
           photo: currentUser.user._user.photoURL,
+          latitude: '',
+          longitude: '',
         });
 
         // if (currentUser.additionalUserInfo.isNewUser) {
